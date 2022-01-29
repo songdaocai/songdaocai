@@ -37,3 +37,12 @@ jobs:
           plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
           plugin_languages_threshold: 0%
+          name: Update README.md
+          run: |
+            if [[ "$(git status --porcelain)" != "" ]]; then
+            git config user.name ${{ secrets.USER_NAME }}
+            git config user.email ${{ secrets.USER_EMAIL }}
+            git add .
+            git commit -m "📈 update profile stats"
+            git push
+            fi
